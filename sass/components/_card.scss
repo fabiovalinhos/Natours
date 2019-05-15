@@ -1,0 +1,51 @@
+.card {
+    perspective: 150rem;
+    -moz-perspective: 150rem;
+
+    // durante o position entrou em colapso com height, preciso repetir a informação aqui
+    height: 50rem;
+
+    position: relative;
+
+    &__side {
+        color: white;
+        font-size: 2rem;
+        height: 50rem;
+        transition: all .8s ease;
+        
+        // posicionamento dos cards front e back
+        position: absolute;
+        top: 0;
+        left: 0;
+
+        // Pegar todo o width senão fica estreito
+        width: 100%;
+
+        // escoder a parte de trás do elemento
+        backface-visibility: hidden;
+
+        border-radius: .3rem;
+        box-shadow: 0 1.5rem 4rem rgba($color-black, .15);
+        
+        &--front {
+            background-color: $color-white;
+
+        }
+
+        &--back {
+            transform: rotateY(180deg);
+
+            &-1 {
+                background-image: linear-gradient(to right bottom, $color-secondary-light, $color-secondary-dark);
+            }
+        }
+    }
+
+    &:hover &__side--front {
+        transform: rotateY(180deg);
+    }
+
+    &:hover &__side--back {
+        transform: rotateY(0);
+    }
+}
