@@ -1,16 +1,18 @@
 .card {
+
+    // functionality
+
+    // só testando chrome
     perspective: 150rem;
     -moz-perspective: 150rem;
 
     // durante o position entrou em colapso com height, preciso repetir a informação aqui
-    height: 50rem;
+    height: 52rem;
 
     position: relative;
 
     &__side {
-        color: white;
-        font-size: 2rem;
-        height: 50rem;
+        height: 52rem;
         transition: all .8s ease;
         
         // posicionamento dos cards front e back
@@ -21,10 +23,13 @@
         // Pegar todo o width senão fica estreito
         width: 100%;
 
-        // escoder a parte de trás do elemento
+        // esconder a parte de trás do elemento
         backface-visibility: hidden;
 
         border-radius: .3rem;
+        
+        // cuida da figura que ultrapassa os limites na extremidade do card, onde está o border-radius
+        overflow: hidden;
         box-shadow: 0 1.5rem 4rem rgba($color-black, .15);
         
         &--front {
@@ -42,10 +47,78 @@
     }
 
     &:hover &__side--front {
-        transform: rotateY(180deg);
+        transform: rotateY(-180deg);
     }
 
     &:hover &__side--back {
         transform: rotateY(0);
+    }
+
+    // front side styling
+
+    &__picture {
+        height: 23rem;
+        background-size: cover;
+
+        // novo isto aqui para mim, evitou usar o gimp
+        background-blend-mode: screen;
+        -webkit-clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+        clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+
+        &--1 {
+            background-image: linear-gradient(to right bottom, $color-secondary-light, $color-secondary-dark), url(../img/nat-5.jpg);
+        }
+
+        &--2 {
+            background-image: url(../img/nat-5.jpg);
+        }
+
+        &--3 {
+            background-image: url(../img/nat-5.jpg);
+        }
+    }
+
+    &__heading {
+        font-size: 2.8rem;
+        font-weight: 300;
+        text-transform: uppercase;
+        text-align: right;
+        color: $color-white;
+        position: absolute;
+        top: 12rem;
+        right: 2rem;
+        width: 75%;
+    }
+
+    &__heading-span {
+        padding: 1rem 1.5rem;
+        -webkit-box-decoration-break: clone;
+        box-decoration-break: clone;
+        
+        &--1 {
+            background-image: linear-gradient(to right bottom, 
+            rgba($color-secondary-light, .85), 
+            rgba($color-secondary-dark, .85))
+        }
+    }
+
+    &__details {
+        padding: 3rem;
+
+        ul {
+            list-style: none;
+            width: 80%;
+            margin: 0 auto;
+            
+            li {
+                text-align: center;
+                font-size: 1.5rem;
+                padding: 1rem;
+
+                &:not(:last-child) {
+                    border-bottom: 1px solid $color-grey-light-2;
+                }
+            }
+        }
     }
 }
