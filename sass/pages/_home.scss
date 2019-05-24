@@ -35,6 +35,11 @@
 }
 
 .section-stories {
+    // para posicionar o video que está com position absolute em bg-video.scss
+    position: relative;
+
     padding: 15rem 0;
-    background-color: $color-grey-light-1;
+
+    // Agora tem o vídeo como background
+    // background-color: $color-grey-light-1;
 }
