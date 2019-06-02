@@ -14,6 +14,7 @@
         border-bottom: 3px solid transparent;
         width: 90%;
         display: block;
+        transition: all .3s;
 
         &:focus {
             outline: none;
@@ -44,5 +45,65 @@
         opacity: 0;
         visibility: hidden;
         transform: translateY(-4rem);
+    }
+
+    // botões
+
+    &__radio-group {
+        width: 49%;
+        display: inline-block;
+    }
+
+    &__radio-input {
+        display: none;
+    }
+
+    &__radio-label {
+        font-size: $default-font-size;
+        cursor: pointer;
+
+        // para posicionar nosso style button
+        position: relative;
+
+        // ajudar no posicionamento do novo botao
+        padding-left: 4.5rem;
+    }
+
+    &__radio-button {
+        
+        height: 3rem;
+        width: 3rem;
+        border: 5px solid $color-primary;
+        border-radius: 50%;
+        // ficou espremido e deslocado, usar um display agora
+        display: inline-block;
+        // posicionar na unha
+        position: absolute;
+        left: 0;
+        top: -.4rem;
+
+
+        &::after {
+            content: "";
+            display: block;
+            height: 1.2rem;
+            width: 1.2rem;
+            border-radius: 50%;
+
+            // posicionamento trick
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            background-color: $color-primary;
+
+            opacity: 0;
+            transition: opacity .2s;
+        }
+    }
+
+    // Ao estar checkado meu radio-input, ele irá selecionar o elemento a seguir, que é o radio-label e seu filho button::after
+    &__radio-input:checked ~ &__radio-label &__radio-button::after {
+        opacity: 1;
     }
 }

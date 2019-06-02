@@ -1,5 +1,8 @@
 .btn {
 
+    // &, é para meu elemento <button>
+    // elemento <button> nao tem pseudo class link ou visited
+    &,
     &:link, 
     &:visited {
         text-transform: uppercase;
@@ -16,6 +19,10 @@
 
         /* para referenciar o meu after */
         position: relative;
+
+        // Change for the <button> element
+        border: none;
+        cursor: pointer;
     }
 
     &:hover {
@@ -28,7 +35,10 @@
         }
     }
 
-    &:active {
+    &:active,
+    &:focus {
+        // tirar o focus ao apertar o botão
+        outline: none;
         transform: translate(-1px);
         box-shadow: 0 .5rem 1.2rem rgba($color-black, .6);
     }
