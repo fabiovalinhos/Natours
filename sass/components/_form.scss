@@ -27,6 +27,7 @@
             border-bottom: 3px solid $color-secondary-dark;
         }
 
+        // editar o placeholder, neste caso para chrome, safari e opera. Esta no css-tricks como ::placeholder
         &::-webkit-input-placeholder {
             color: $color-grey-dark-2;
         }
@@ -41,6 +42,7 @@
         transition: all .3s;
     }
 
+    // quando o placeholder estiver sendo MOSTRADO (show), meu form_label terá o settings abaixo
     &__input:placeholder-shown + &__label {
         opacity: 0;
         visibility: hidden;
