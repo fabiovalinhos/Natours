@@ -7,6 +7,13 @@
     background-color: rgba($color-black, .8);
     z-index: 9999;
 
+    // Vamos animar meu popup
+    opacity: 0;
+    visibility: hidden;
+    transition: all .3s;
+
+    
+
     &__content {
         @include absCenter;
 
@@ -17,8 +24,16 @@
 
         // para manter o lado direito e esquerdo com o mesmo tamanho, usarei table ao invés de float
         display: table;
-
+        
+        // para a foto nao passar da borda arredondada
         overflow: hidden;
+
+        // para começar pequeno e criar o efeito zoom
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(.1);
+
+        // temos um delay
+        transition: all .5s .2s;
     }
 
     &__left {
@@ -50,5 +65,36 @@
 
         -webkit-hyphens: auto;
         hyphens: auto;
+    }
+
+    // fazer aparecer meu popup e ter a opção de fechá-lo
+    // Open state
+    &:target {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    &:target &__content {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+
+    &__close {
+        &:link,
+        &:visited {
+            color: $color-grey-dark;
+            position: absolute;
+            top: 2.5rem;
+            right: 2.5rem;
+            font-size: 3rem;
+            text-decoration: none;
+            display: inline-block;
+            transition: all .2s;
+            line-height: 1;
+        }
+
+        &:hover {
+            color: $color-primary;
+        }
     }
 }
